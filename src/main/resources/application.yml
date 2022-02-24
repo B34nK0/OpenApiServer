@@ -1,0 +1,43 @@
+server:
+  port: 22089
+
+spring:
+  application:
+    name: open-api-gateway
+  datasource:
+    url: jdbc:sqlite:./openApiGateway.db
+    username:
+    password:
+    driver-class-name: org.sqlite.JDBC
+    initialization-mode: always
+    schema:
+      - classpath:openApiGateway.sql
+  mvc:
+    throw-exception-if-no-handler-found: true
+  profiles:
+    active: dev
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.digquant.entity
+
+
+
+logging:
+  level:
+    com:
+      digquant:
+        dao: debug
+        cache: debug
+        controller: debug
+        service: debug
+  file:
+    path: /dq/log/new/gateway
+
+backend:
+  service:
+    timeout:
+      inmillis: 10000
+    url:
+      prefix: http://127.0.0.1:8080

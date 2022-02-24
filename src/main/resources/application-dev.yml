@@ -1,0 +1,23 @@
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 10
+  client:
+    service-url:
+      defaultZone: http://10.86.168.45:22001/eureka/
+    #      defaultZone: http://localhost:22001/eureka/
+    initial-instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 5
+    eureka-server-connect-timeout-seconds: 60
+
+
+
+
+spring:
+  redis:
+    host: 10.86.168.44
+    port: 6379
+
